@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>LINE Mini App</title>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <h2 id="greeting">Loading...</h2>
+  <script>
+    async function main() {
+      await liff.init({ liffId: "Ud095db27954b600245dd27c126bad8c6" });
+      if (!liff.isLoggedIn()) {
+        liff.login();
+      } else {
+        const profile = await liff.getProfile();
+        document.getElementById("greeting").innerText = `${profile.displayName}さん、こんにちは！`;
+      }
+    }
+    main();
+  </script>
+</body>
+</html>
